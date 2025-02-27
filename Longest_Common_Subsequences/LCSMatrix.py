@@ -1,3 +1,29 @@
+"""
+The LCSMatrix class implements the Longest Common Subsequences (LCS) algorithm using dynamic programming.
+It computes a matrix that represents the length of the LCS for substrings of two input strings and provides
+methods to retrieve the matrix entries and the set of all distinct LCS.
+
+Key Features:
+1. Matrix Construction:
+   - The matrix is built using a bottom-up dynamic programming approach.
+   - Each cell stores the length of the LCS for substrings up to that point.
+   - Rules:
+     a) If characters match, matrix[R][C] = 1 + matrix[R-1][C-1].
+     b) If not, matrix[R][C] = max(matrix[R-1][C], matrix[R][C-1]).
+
+2. LCS Retrieval:
+   - Uses backtracking to find all distinct LCS from the computed matrix.
+   - Handles cases with multiple LCS or no common subsequences.
+
+3. Methods:
+   - `get_entry(row_index, column_index)`: Retrieves a specific matrix entry or 0 if out of bounds.
+   - `get_longest_common_subsequences()`: Returns a set of all distinct LCS between the two strings.
+   - `get_row_count()` and `get_column_count()`: Provide dimensions of the matrix.
+
+This implementation handles edge cases such as empty strings and strings with no common characters.
+"""
+
+
 class LCSMatrix:
     def __init__(self, str1, str2):
         self.str1 = str1
